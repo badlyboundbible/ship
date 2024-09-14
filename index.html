@@ -42,17 +42,6 @@
             font-size: 18px;
             transition: background-color 0.3s;
         }
-        button {
-            padding: 10px 20px;
-            background-color: #ff4c4c;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin: 10px;
-        }
-        button:hover {
-            background-color: #ff1f1f;
-        }
         .result {
             margin-top: 20px;
             font-size: 20px;
@@ -63,6 +52,7 @@
 <body>
     <h1>SHIP Rating System</h1>
 
+    <!-- S Grade Selection -->
     <div class="form-group">
         <label for="s-grade">S Grade:</label>
         <div class="grade-group">
@@ -86,6 +76,7 @@
         </div>
     </div>
 
+    <!-- H Grade Selection -->
     <div class="form-group">
         <label for="h-grade">H Grade:</label>
         <div class="grade-group">
@@ -109,6 +100,7 @@
         </div>
     </div>
 
+    <!-- I Grade Selection -->
     <div class="form-group">
         <label for="i-grade">I Grade:</label>
         <div class="grade-group">
@@ -132,6 +124,7 @@
         </div>
     </div>
 
+    <!-- P Grade Selection -->
     <div class="form-group">
         <label for="p-grade">P Grade:</label>
         <div class="grade-group">
@@ -155,49 +148,55 @@
         </div>
     </div>
 
-    <button id="calculateButton">Calculate Final Rating</button>
-    <button id="clearButton">Clear All Fields</button>
-
     <div class="result" id="final-result"></div>
 
     <script>
-        // Function to calculate the SHIP rating
+        // Function to calculate the SHIP rating dynamically
         function calculateSHIPRating() {
-            // Get selected values from radio buttons
-            var sGrade = document.querySelector('input[name="s-grade"]:checked').value;
-            var hGrade = document.querySelector('input[name="h-grade"]:checked').value;
-            var iGrade = document.querySelector('input[name="i-grade"]:checked').value;
-            var pGrade = document.querySelector('input[name="p-grade"]:checked').value;
+            // Check if all grades are selected
+            if (document.querySelector('input[name="s-grade"]:checked') &&
+                document.querySelector('input[name="h-grade"]:checked') &&
+                document.querySelector('input[name="i-grade"]:checked') &&
+                document.querySelector('input[name="p-grade"]:checked')) {
 
-            var grades = [sGrade, hGrade, iGrade, pGrade];
+                // Get selected values from radio buttons
+                var sGrade = document.querySelector('input[name="s-grade"]:checked').value;
+                var hGrade = document.querySelector('input[name="h-grade"]:checked').value;
+                var iGrade = document.querySelector('input[name="i-grade"]:checked').value;
+                var pGrade = document.querySelector('input[name="p-grade"]:checked').value;
 
-            // Map grades to numeric values
-            const gradeValues = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'E': 1, 'F': 0 };
-            const averageValue = grades.reduce((sum, grade) => sum + (gradeValues[grade] || 0), 0) / grades.length;
-            
-            let finalGrade = '';
-            if (averageValue >= 4.5) {
-                finalGrade = 'A';
-            } else if (averageValue >= 3.5) {
-                finalGrade = 'B';
-            } else if (averageValue >= 2.5) {
-                finalGrade = 'C';
-            } else if (averageValue >= 1.5) {
-                finalGrade = 'D';
-            } else if (averageValue >= 0.5) {
-                finalGrade = 'E';
-            } else {
-                finalGrade = 'F';
-            }
+                var grades = [sGrade, hGrade, iGrade, pGrade];
 
-            // Determine pass/fail status
-            let passStatus = 'Pass';
-            if (grades.includes('F')) {
-                passStatus = 'Clear Fail';
-            } else if (grades.includes('E')) {
-                passStatus = 'Marginal Fail';
-            } else if (grades.filter(grade => grade === 'A').length >= 3) {
-                passStatus = 'with Distinction';
-            } else if (grades.filter(grade => ['A', 'B'].includes(grade)).length >= 4) {
-                passStatus = 'with Merit';
-           
+                // Map grades to numeric values
+                const gradeValues = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'E': 1, 'F': 0 };
+                const averageValue = grades.reduce((sum, grade) => sum + (gradeValues[grade] || 0), 0) / grades.length;
+
+                let finalGrade = '';
+                if (averageValue >= 4.5) {
+                    finalGrade = 'A';
+                } else if (averageValue >= 3.5) {
+                    finalGrade = 'B';
+                } else if (averageValue >= 2.5) {
+                    finalGrade = 'C';
+                } else if (averageValue >= 1.5) {
+                    finalGrade = 'D';
+                } else if (averageValue >= 0.5) {
+                    finalGrade = 'E';
+                } else {
+                    finalGrade = 'F';
+                }
+
+                // Determine pass/fail status
+                let passStatus = 'Pass';
+                if (grades.includes('F')) {
+                    passStatus = 'Clear Fail';
+                } else if (grades.includes('E')) {
+                    passStatus = 'Marginal Fail';
+                } else if (grades.filter(grade => grade === 'A').length >= 3) {
+                    passStatus = 'with Distinction';
+                } else if (grades.filter(grade => ['A', 'B'].includes(grade)).length >= 4) {
+                    passStatus = 'with Merit';
+                }
+
+                // Display final result
+                document.getElementById('final-result').innerText
