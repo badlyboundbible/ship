@@ -1,6 +1,6 @@
 {
-  "name": "SHIP",
-  "short_name": "SHIP",
+  "name": "SHIP Rating System",
+  "short_name": "SHIP Rating",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
