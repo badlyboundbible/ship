@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHIP Rating System</title>
 
-    <!-- Link to the manifest file with root-relative path -->
     <link rel="manifest" href="/manifest.json">
 
     <style>
@@ -15,25 +14,41 @@
             text-align: center;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
         }
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
-        input {
-            padding: 8px;
-            width: 100px;
-            text-align: right; /* Right-align input text */
-            border-radius: 0;  /* Make the input boxes square */
+        .grade-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        input[type="radio"] {
+            display: none; /* Hide the radio button */
+        }
+        input[type="radio"]:checked + label {
+            background-color: #ff4c4c; /* Selected state */
+            color: white;
+        }
+        .grade-label {
+            padding: 10px 20px;
+            background-color: #f0f0f0; /* Unselected state */
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
         }
         button {
             padding: 10px 20px;
-            background-color: #ff4c4c; /* Red instead of green */
+            background-color: #ff4c4c;
             color: white;
             border: none;
             cursor: pointer;
-            margin: 5px;
+            margin: 10px;
         }
         button:hover {
             background-color: #ff1f1f;
@@ -50,19 +65,94 @@
 
     <div class="form-group">
         <label for="s-grade">S Grade:</label>
-        <input type="text" id="s-grade" maxlength="1" />
+        <div class="grade-group">
+            <input type="radio" id="s-A" name="s-grade" value="A">
+            <label class="grade-label" for="s-A">A</label>
+
+            <input type="radio" id="s-B" name="s-grade" value="B">
+            <label class="grade-label" for="s-B">B</label>
+
+            <input type="radio" id="s-C" name="s-grade" value="C">
+            <label class="grade-label" for="s-C">C</label>
+
+            <input type="radio" id="s-D" name="s-grade" value="D">
+            <label class="grade-label" for="s-D">D</label>
+
+            <input type="radio" id="s-E" name="s-grade" value="E">
+            <label class="grade-label" for="s-E">E</label>
+
+            <input type="radio" id="s-F" name="s-grade" value="F">
+            <label class="grade-label" for="s-F">F</label>
+        </div>
     </div>
+
     <div class="form-group">
         <label for="h-grade">H Grade:</label>
-        <input type="text" id="h-grade" maxlength="1" />
+        <div class="grade-group">
+            <input type="radio" id="h-A" name="h-grade" value="A">
+            <label class="grade-label" for="h-A">A</label>
+
+            <input type="radio" id="h-B" name="h-grade" value="B">
+            <label class="grade-label" for="h-B">B</label>
+
+            <input type="radio" id="h-C" name="h-grade" value="C">
+            <label class="grade-label" for="h-C">C</label>
+
+            <input type="radio" id="h-D" name="h-grade" value="D">
+            <label class="grade-label" for="h-D">D</label>
+
+            <input type="radio" id="h-E" name="h-grade" value="E">
+            <label class="grade-label" for="h-E">E</label>
+
+            <input type="radio" id="h-F" name="h-grade" value="F">
+            <label class="grade-label" for="h-F">F</label>
+        </div>
     </div>
+
     <div class="form-group">
         <label for="i-grade">I Grade:</label>
-        <input type="text" id="i-grade" maxlength="1" />
+        <div class="grade-group">
+            <input type="radio" id="i-A" name="i-grade" value="A">
+            <label class="grade-label" for="i-A">A</label>
+
+            <input type="radio" id="i-B" name="i-grade" value="B">
+            <label class="grade-label" for="i-B">B</label>
+
+            <input type="radio" id="i-C" name="i-grade" value="C">
+            <label class="grade-label" for="i-C">C</label>
+
+            <input type="radio" id="i-D" name="i-grade" value="D">
+            <label class="grade-label" for="i-D">D</label>
+
+            <input type="radio" id="i-E" name="i-grade" value="E">
+            <label class="grade-label" for="i-E">E</label>
+
+            <input type="radio" id="i-F" name="i-grade" value="F">
+            <label class="grade-label" for="i-F">F</label>
+        </div>
     </div>
+
     <div class="form-group">
         <label for="p-grade">P Grade:</label>
-        <input type="text" id="p-grade" maxlength="1" />
+        <div class="grade-group">
+            <input type="radio" id="p-A" name="p-grade" value="A">
+            <label class="grade-label" for="p-A">A</label>
+
+            <input type="radio" id="p-B" name="p-grade" value="B">
+            <label class="grade-label" for="p-B">B</label>
+
+            <input type="radio" id="p-C" name="p-grade" value="C">
+            <label class="grade-label" for="p-C">C</label>
+
+            <input type="radio" id="p-D" name="p-grade" value="D">
+            <label class="grade-label" for="p-D">D</label>
+
+            <input type="radio" id="p-E" name="p-grade" value="E">
+            <label class="grade-label" for="p-E">E</label>
+
+            <input type="radio" id="p-F" name="p-grade" value="F">
+            <label class="grade-label" for="p-F">F</label>
+        </div>
     </div>
 
     <button id="calculateButton">Calculate Final Rating</button>
@@ -73,10 +163,11 @@
     <script>
         // Function to calculate the SHIP rating
         function calculateSHIPRating() {
-            var sGrade = document.getElementById('s-grade').value.toUpperCase();
-            var hGrade = document.getElementById('h-grade').value.toUpperCase();
-            var iGrade = document.getElementById('i-grade').value.toUpperCase();
-            var pGrade = document.getElementById('p-grade').value.toUpperCase();
+            // Get selected values from radio buttons
+            var sGrade = document.querySelector('input[name="s-grade"]:checked').value;
+            var hGrade = document.querySelector('input[name="h-grade"]:checked').value;
+            var iGrade = document.querySelector('input[name="i-grade"]:checked').value;
+            var pGrade = document.querySelector('input[name="p-grade"]:checked').value;
 
             var grades = [sGrade, hGrade, iGrade, pGrade];
 
@@ -109,35 +200,4 @@
                 passStatus = 'with Distinction';
             } else if (grades.filter(grade => ['A', 'B'].includes(grade)).length >= 4) {
                 passStatus = 'with Merit';
-            }
-
-            // Display final result
-            document.getElementById('final-result').innerText = 'Final Grade: ' + finalGrade + ' (' + passStatus + ')';
-        }
-
-        // Function to clear all input fields
-        function clearFields() {
-            document.getElementById('s-grade').value = '';
-            document.getElementById('h-grade').value = '';
-            document.getElementById('i-grade').value = '';
-            document.getElementById('p-grade').value = '';
-            document.getElementById('final-result').innerText = '';
-        }
-
-        // Add event listeners to buttons
-        document.getElementById('calculateButton').addEventListener('click', calculateSHIPRating);
-        document.getElementById('clearButton').addEventListener('click', clearFields);
-
-        // Register the service worker for offline support
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                    console.log('Service Worker registered with scope:', registration.scope);
-                }, function(err) {
-                    console.log('Service Worker registration failed:', err);
-                });
-            });
-        }
-    </script>
-</body>
-</html>
+           
