@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIP Rating System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            padding: 8px;
+            width: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>SHIP Rating System</h1>
+    <div class="form-group">
+        <label for="s-grade">S Grade:</label>
+        <input type="text" id="s-grade" maxlength="1" />
+    </div>
+    <div class="form-group">
+        <label for="h-grade">H Grade:</label>
+        <input type="text" id="h-grade" maxlength="1" />
+    </div>
+    <div class="form-group">
+        <label for="i-grade">I Grade:</label>
+        <input type="text" id="i-grade" maxlength="1" />
+    </div>
+    <div class="form-group">
+        <label for="p-grade">P Grade:</label>
+        <input type="text" id="p-grade" maxlength="1" />
+    </div>
+    <button onclick="calculateSHIPRating()">Calculate Final Rating</button>
+    <div class="result" id="final-result"></div>
+
+    <script>
+        function calculateSHIPRating() {
+            // Get grades from inputs
+            var sGrade = document.getElementById('s-grade').value.toUpperCase();
+            var hGrade = document.getElementById('h-grade').value.toUpperCase();
+            var iGrade = document.getElementById('i-grade').value.toUpperCase();
+            var pGrade = document.getElementById('p-grade').value.toUpperCase();
+            
+            var grades = [sGrade, hGrade, iGrade, pGrade];
+
+            // Function to determine final rating
+            function getFinalRating(grades) {
+                const distinctionCriteria = [['A', 'A', 'A', 'A'], ['A', 'A', 'A', 'B']];
+                const meritCriteria = [['A', 'B', 'B', 'B'], ['A', 'A', 'B', 'B']];
+                
+                if (grades.includes('F')) {
+                    return 'Clear Fail';
+                } else if (grades.includes('E')) {
+                    return 'Marginal Fail';
+                } else if (JSON.stringify(grades.sort()) === JSON.stringify(distinctionCriteria[0]) || 
+                           JSON.stringify(grades.sort()) === JSON.stringify(distinctionCriteria[1])) {
+                    return 'Pass with Distinction';
+                } else if (JSON.stringify(grades.sort()) === JSON.stringify(meritCriteria[0]) || 
+                           JSON.stringify(grades.sort()) === JSON.stringify(meritCriteria[1])) {
+                    return 'Pass with Merit';
+                } else {
+                    return 'Pass';
+                }
+            }
+
+            // Display final result
+            var finalResult = getFinalRating(grades);
+            document.getElementById('final-result').innerText = 'Final Rating: ' + finalResult;
+        }
+    </script>
+</body>
+</html>
