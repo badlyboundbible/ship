@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHIP Rating System</title>
 
-    <link rel="manifest" href="/manifest.json">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,21 +23,19 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 15px;
         }
         input[type="radio"] {
-            display: none; /* Hide the radio button */
+            display: none;
         }
         input[type="radio"]:checked + label {
-            background-color: #ff4c4c; /* Selected state */
+            background-color: #ff4c4c;
             color: white;
         }
         .grade-label {
             padding: 10px 20px;
-            background-color: #f0f0f0; /* Unselected state */
+            background-color: #f0f0f0;
             border: 1px solid #ccc;
             cursor: pointer;
-            font-size: 18px;
             transition: background-color 0.3s;
         }
         button {
@@ -48,7 +44,7 @@
             color: white;
             border: none;
             cursor: pointer;
-            margin: 10px;
+            margin-top: 20px;
         }
         button:hover {
             background-color: #ff1f1f;
@@ -61,150 +57,96 @@
     </style>
 </head>
 <body>
+
     <h1>SHIP Rating System</h1>
 
-    <!-- S Grade Selection -->
+    <!-- Grade Selection for S, H, I, P -->
     <div class="form-group">
-        <label for="s-grade">S Grade:</label>
+        <label>S Grade:</label>
         <div class="grade-group">
-            <input type="radio" id="s-A" name="s-grade" value="A">
-            <label class="grade-label" for="s-A">A</label>
-
-            <input type="radio" id="s-B" name="s-grade" value="B">
-            <label class="grade-label" for="s-B">B</label>
-
-            <input type="radio" id="s-C" name="s-grade" value="C">
-            <label class="grade-label" for="s-C">C</label>
-
-            <input type="radio" id="s-D" name="s-grade" value="D">
-            <label class="grade-label" for="s-D">D</label>
-
-            <input type="radio" id="s-E" name="s-grade" value="E">
-            <label class="grade-label" for="s-E">E</label>
-
-            <input type="radio" id="s-F" name="s-grade" value="F">
-            <label class="grade-label" for="s-F">F</label>
+            <input type="radio" id="s-A" name="s-grade" value="A"><label class="grade-label" for="s-A">A</label>
+            <input type="radio" id="s-B" name="s-grade" value="B"><label class="grade-label" for="s-B">B</label>
+            <input type="radio" id="s-C" name="s-grade" value="C"><label class="grade-label" for="s-C">C</label>
+            <input type="radio" id="s-D" name="s-grade" value="D"><label class="grade-label" for="s-D">D</label>
+            <input type="radio" id="s-E" name="s-grade" value="E"><label class="grade-label" for="s-E">E</label>
+            <input type="radio" id="s-F" name="s-grade" value="F"><label class="grade-label" for="s-F">F</label>
         </div>
     </div>
 
-    <!-- H Grade Selection -->
     <div class="form-group">
-        <label for="h-grade">H Grade:</label>
+        <label>H Grade:</label>
         <div class="grade-group">
-            <input type="radio" id="h-A" name="h-grade" value="A">
-            <label class="grade-label" for="h-A">A</label>
-
-            <input type="radio" id="h-B" name="h-grade" value="B">
-            <label class="grade-label" for="h-B">B</label>
-
-            <input type="radio" id="h-C" name="h-grade" value="C">
-            <label class="grade-label" for="h-C">C</label>
-
-            <input type="radio" id="h-D" name="h-grade" value="D">
-            <label class="grade-label" for="h-D">D</label>
-
-            <input type="radio" id="h-E" name="h-grade" value="E">
-            <label class="grade-label" for="h-E">E</label>
-
-            <input type="radio" id="h-F" name="h-grade" value="F">
-            <label class="grade-label" for="h-F">F</label>
+            <input type="radio" id="h-A" name="h-grade" value="A"><label class="grade-label" for="h-A">A</label>
+            <input type="radio" id="h-B" name="h-grade" value="B"><label class="grade-label" for="h-B">B</label>
+            <input type="radio" id="h-C" name="h-grade" value="C"><label class="grade-label" for="h-C">C</label>
+            <input type="radio" id="h-D" name="h-grade" value="D"><label class="grade-label" for="h-D">D</label>
+            <input type="radio" id="h-E" name="h-grade" value="E"><label class="grade-label" for="h-E">E</label>
+            <input type="radio" id="h-F" name="h-grade" value="F"><label class="grade-label" for="h-F">F</label>
         </div>
     </div>
 
-    <!-- I Grade Selection -->
     <div class="form-group">
-        <label for="i-grade">I Grade:</label>
+        <label>I Grade:</label>
         <div class="grade-group">
-            <input type="radio" id="i-A" name="i-grade" value="A">
-            <label class="grade-label" for="i-A">A</label>
-
-            <input type="radio" id="i-B" name="i-grade" value="B">
-            <label class="grade-label" for="i-B">B</label>
-
-            <input type="radio" id="i-C" name="i-grade" value="C">
-            <label class="grade-label" for="i-C">C</label>
-
-            <input type="radio" id="i-D" name="i-grade" value="D">
-            <label class="grade-label" for="i-D">D</label>
-
-            <input type="radio" id="i-E" name="i-grade" value="E">
-            <label class="grade-label" for="i-E">E</label>
-
-            <input type="radio" id="i-F" name="i-grade" value="F">
-            <label class="grade-label" for="i-F">F</label>
+            <input type="radio" id="i-A" name="i-grade" value="A"><label class="grade-label" for="i-A">A</label>
+            <input type="radio" id="i-B" name="i-grade" value="B"><label class="grade-label" for="i-B">B</label>
+            <input type="radio" id="i-C" name="i-grade" value="C"><label class="grade-label" for="i-C">C</label>
+            <input type="radio" id="i-D" name="i-grade" value="D"><label class="grade-label" for="i-D">D</label>
+            <input type="radio" id="i-E" name="i-grade" value="E"><label class="grade-label" for="i-E">E</label>
+            <input type="radio" id="i-F" name="i-grade" value="F"><label class="grade-label" for="i-F">F</label>
         </div>
     </div>
 
-    <!-- P Grade Selection -->
     <div class="form-group">
-        <label for="p-grade">P Grade:</label>
+        <label>P Grade:</label>
         <div class="grade-group">
-            <input type="radio" id="p-A" name="p-grade" value="A">
-            <label class="grade-label" for="p-A">A</label>
-
-            <input type="radio" id="p-B" name="p-grade" value="B">
-            <label class="grade-label" for="p-B">B</label>
-
-            <input type="radio" id="p-C" name="p-grade" value="C">
-            <label class="grade-label" for="p-C">C</label>
-
-            <input type="radio" id="p-D" name="p-grade" value="D">
-            <label class="grade-label" for="p-D">D</label>
-
-            <input type="radio" id="p-E" name="p-grade" value="E">
-            <label class="grade-label" for="p-E">E</label>
-
-            <input type="radio" id="p-F" name="p-grade" value="F">
-            <label class="grade-label" for="p-F">F</label>
+            <input type="radio" id="p-A" name="p-grade" value="A"><label class="grade-label" for="p-A">A</label>
+            <input type="radio" id="p-B" name="p-grade" value="B"><label class="grade-label" for="p-B">B</label>
+            <input type="radio" id="p-C" name="p-grade" value="C"><label class="grade-label" for="p-C">C</label>
+            <input type="radio" id="p-D" name="p-grade" value="D"><label class="grade-label" for="p-D">D</label>
+            <input type="radio" id="p-E" name="p-grade" value="E"><label class="grade-label" for="p-E">E</label>
+            <input type="radio" id="p-F" name="p-grade" value="F"><label class="grade-label" for="p-F">F</label>
         </div>
     </div>
 
     <!-- Calculate Button -->
-    <button id="calculateButton" onclick="calculateSHIPRating()">Calculate</button>
+    <button onclick="calculateSHIPRating()">Calculate</button>
 
-    <!-- Final result display -->
+    <!-- Display Final Result -->
     <div class="result" id="final-result"></div>
 
     <script>
-        // Function to calculate the SHIP rating
+        // Function to calculate the final SHIP rating
         function calculateSHIPRating() {
-            // Check if all grades are selected
-            if (document.querySelector('input[name="s-grade"]:checked') &&
-                document.querySelector('input[name="h-grade"]:checked') &&
-                document.querySelector('input[name="i-grade"]:checked') &&
-                document.querySelector('input[name="p-grade"]:checked')) {
+            const gradeValues = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'E': 1, 'F': 0 };
+            const grades = ['s-grade', 'h-grade', 'i-grade', 'p-grade'].map(g => document.querySelector(`input[name="${g}"]:checked`));
 
-                // Get selected values from radio buttons
-                var sGrade = document.querySelector('input[name="s-grade"]:checked').value;
-                var hGrade = document.querySelector('input[name="h-grade"]:checked').value;
-                var iGrade = document.querySelector('input[name="i-grade"]:checked').value;
-                var pGrade = document.querySelector('input[name="p-grade"]:checked').value;
+            // Ensure all grades are selected
+            if (grades.includes(null)) {
+                document.getElementById('final-result').innerText = 'Please select all grades.';
+                return;
+            }
 
-                var grades = [sGrade, hGrade, iGrade, pGrade];
+            const gradeScores = grades.map(g => gradeValues[g.value]);
+            const averageScore = gradeScores.reduce((a, b) => a + b) / gradeScores.length;
+            
+            let finalGrade = '';
+            if (averageScore >= 4.5) finalGrade = 'A';
+            else if (averageScore >= 3.5) finalGrade = 'B';
+            else if (averageScore >= 2.5) finalGrade = 'C';
+            else if (averageScore >= 1.5) finalGrade = 'D';
+            else if (averageScore >= 0.5) finalGrade = 'E';
+            else finalGrade = 'F';
 
-                // Map grades to numeric values
-                const gradeValues = { 'A': 5, 'B': 4, 'C': 3, 'D': 2, 'E': 1, 'F': 0 };
-                const averageValue = grades.reduce((sum, grade) => sum + (gradeValues[grade] || 0), 0) / grades.length;
+            let passStatus = 'Pass';
+            if (grades.map(g => g.value).includes('F')) passStatus = 'Clear Fail';
+            else if (grades.map(g => g.value).includes('E')) passStatus = 'Marginal Fail';
+            else if (grades.filter(g => g.value === 'A').length >= 3) passStatus = 'with Distinction';
+            else if (grades.filter(g => ['A', 'B'].includes(g.value)).length >= 4) passStatus = 'with Merit';
 
-                let finalGrade = '';
-                if (averageValue >= 4.5) {
-                    finalGrade = 'A';
-                } else if (averageValue >= 3.5) {
-                    finalGrade = 'B';
-                } else if (averageValue >= 2.5) {
-                    finalGrade = 'C';
-                } else if (averageValue >= 1.5) {
-                    finalGrade = 'D';
-                } else if (averageValue >= 0.5) {
-                    finalGrade = 'E';
-                } else {
-                    finalGrade = 'F';
-                }
+            document.getElementById('final-result').innerText = `Final Grade: ${finalGrade} (${passStatus})`;
+        }
+    </script>
 
-                // Determine pass/fail status
-                let passStatus = 'Pass';
-                if (grades.includes('F')) {
-                    passStatus = 'Clear Fail';
-                } else if (grades.includes('E')) {
-                    passStatus = 'Marginal Fail';
-                } else if (grades.filter(grade => grade === '
+</body>
+</html>
