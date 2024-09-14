@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHIP Rating System</title>
 
+    <!-- Link to the manifest for PWA -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Add meta tags for the theme color (for Android) -->
+    <meta name="theme-color" content="#ff4c4c">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -145,6 +151,15 @@
             else if (grades.filter(g => ['A', 'B'].includes(g.value)).length >= 4) passStatus = 'with Merit';
 
             document.getElementById('final-result').innerText = `Final Grade: ${finalGrade} (${passStatus})`;
+        }
+
+        // Register the service worker for offline support
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }, function(err) {
+                console.log('Service Worker registration failed:', err);
+            });
         }
     </script>
 
