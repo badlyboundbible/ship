@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHIP Rating System</title>
 
-    <!-- Link to the manifest for PWA -->
-    <link rel="manifest" href="/manifest.json">
-    
-    <!-- Add meta tags for the theme color (for Android) -->
-    <meta name="theme-color" content="#ff4c4c">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -133,33 +127,29 @@
                 return;
             }
 
+            // If any grade is 'F', it's an automatic fail
+            if (grades.map(g => g.value).includes('F')) {
+                document.getElementById('final-result').innerText = 'Fail (Automatic Fail due to F grade)';
+                return;
+            }
+
             const gradeScores = grades.map(g => gradeValues[g.value]);
-            const averageScore = gradeScores.reduce((a, b) => a + b) / gradeScores.length;
-            
-            let finalGrade = '';
-            if (averageScore >= 4.5) finalGrade = 'A';
-            else if (averageScore >= 3.5) finalGrade = 'B';
-            else if (averageScore >= 2.5) finalGrade = 'C';
-            else if (averageScore >= 1.5) finalGrade = 'D';
-            else if (averageScore >= 0.5) finalGrade = 'E';
-            else finalGrade = 'F';
+            const totalScore = gradeScores.reduce((a, b) => a + b, 0);
 
-            let passStatus = 'Pass';
-            if (grades.map(g => g.value).includes('F')) passStatus = 'Clear Fail';
-            else if (grades.map(g => g.value).includes('E')) passStatus = 'Marginal Fail';
-            else if (grades.filter(g => g.value === 'A').length >= 3) passStatus = 'with Distinction';
-            else if (grades.filter(g => ['A', 'B'].includes(g.value)).length >= 4) passStatus = 'with Merit';
+            let classification = '';
+            if (totalScore === 20) classification = '1st Class with Distinction';
+            else if (totalScore === 18) classification = '1st Class';
+            else if (totalScore >= 16) classification = '2nd Class Upper';
+            else if (totalScore >= 12) classification = '2nd Class Lower';
+            else if (totalScore >= 8) classification = '3rd Class';
+            else classification = 'Fail';
 
-            document.getElementById('final-result').innerText = `Final Grade: ${finalGrade} (${passStatus})`;
-        }
+            // Add (M) if S-grade is 'A'
+            if (grades[0].value === 'A') {
+                classification += ' (M)';
+            }
 
-        // Register the service worker for offline support
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                console.log('Service Worker registered with scope:', registration.scope);
-            }, function(err) {
-                console.log('Service Worker registration failed:', err);
-            });
+            document.getElementById('final-result').innerText = `Final Classification: ${classification} (Score: ${totalScore})`;
         }
     </script>
 
