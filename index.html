@@ -160,7 +160,7 @@
     </div>
 
     <!-- Calculate Button -->
-    <button id="calculateButton" onclick="calculateSHIPRating()">Calculate Final Rating</button>
+    <button id="calculateButton" onclick="calculateSHIPRating()">Calculate</button>
 
     <!-- Final result display -->
     <div class="result" id="final-result"></div>
@@ -205,4 +205,6 @@
                 let passStatus = 'Pass';
                 if (grades.includes('F')) {
                     passStatus = 'Clear Fail';
-                } else if
+                } else if (grades.includes('E')) {
+                    passStatus = 'Marginal Fail';
+                } else if (grades.filter(grade => grade === '
