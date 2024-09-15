@@ -137,19 +137,27 @@
             const totalScore = gradeScores.reduce((a, b) => a + b, 0);
 
             let classification = '';
-            if (totalScore === 20) classification = '1st Class with Distinction';
-            else if (totalScore === 18) classification = '1st Class';
-            else if (totalScore >= 16) classification = '2nd Class Upper';
-            else if (totalScore >= 12) classification = '2nd Class Lower';
-            else if (totalScore >= 8) classification = '3rd Class';
-            else classification = 'Fail';
+
+            if (totalScore === 20) {
+                classification = '1st Class with Distinction';
+            } else if (totalScore >= 18) {
+                classification = '1st Class';
+            } else if (totalScore >= 16) {
+                classification = '2nd Class Upper';
+            } else if (totalScore >= 12) {
+                classification = '2nd Class Lower';
+            } else if (totalScore >= 8) {
+                classification = '3rd Class';
+            } else {
+                classification = 'Fail';
+            }
 
             // Add (M) if S-grade is 'A'
             if (grades[0].value === 'A') {
                 classification += ' (M)';
             }
 
-            document.getElementById('final-result').innerText = `Final Classification: ${classification} (Score: ${totalScore})`;
+            document.getElementById('final-result').innerText = `Final Classification: ${classification}`;
         }
     </script>
 
